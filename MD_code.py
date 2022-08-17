@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 
-""" Molecular Dynamics Code """
-
-
+""" 
+Molecular Dynamics Code 
+"""
 
 import numpy as np
 #import re
@@ -28,7 +28,8 @@ m_Cl=35.45
 kb = 0.0083144621  #kJ/mol/K
 
  
-
+ 
+#XYZ writer
 def write_xyz(coords,step, output='trajectory.xyz'):
     n_atoms = len(coords)
     generic_string = 'xyz file'
@@ -45,6 +46,9 @@ def write_xyz(coords,step, output='trajectory.xyz'):
         xyz_file.write("%s\t % .5f\t % .5f\t % .5f\n"%(atom,x,y,z))
     return 
 
+
+
+#convert numbers to atom names (Na,Cl)
 def atoms_to_names(coords):
     atom_str = []
     for atom in coords:
@@ -69,7 +73,7 @@ def r(coord_1, coord_2):
     r = coords[1:,np.newaxis,:] - coords[np.newaxis,1:,:]
     return r
         
-
+#create cube of size n
 def cube(n,lattice_parameter):
 
     r = lattice_parameter
